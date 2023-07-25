@@ -1,5 +1,7 @@
 package main
 
-func main() {
+import "modulos/app"
 
+func main() {
+	app.Start()
 }

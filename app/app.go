@@ -1,5 +1,18 @@
 package app
 
-func Start() {
+import (
+	"log"
+	"net/http"
 
+	"github.com/gorilla/mux"
+)
+
+func Start() {
+	router := mux.NewRouter()
+
+	router.HandleFunc("/bank", GetBank)
+	router.HandleFunc("/bank/{id}", GetBankById)
+	router.HandleFunc("/bank", CreateBank).Methods(http.MethodPost)
+
+	log.Fatal(http.ListenAndServe("localhost:8080", router))
 }
